@@ -2,23 +2,23 @@ package com.example.demo.model.enums;
 
 import java.util.HashMap;
 
-public enum ProductType {
+public enum ProductTypeEnum {
     FOOD("food"), DRINK("description");
 
     private final String description;
-    private static final HashMap<String, ProductType> map = new HashMap<>();
-    ProductType(String description) {
+    private static final HashMap<String, ProductTypeEnum> map = new HashMap<>();
+    ProductTypeEnum(String description) {
         this.description = description;
     }
 
     public String getDescription(){ return this.description; }
 
-    public static ProductType getByDescription(String type) {
+    public static ProductTypeEnum getByDescription(String type) {
         return map.get(type);
     }
 
     static{
-        for(ProductType type : ProductType.values()){
+        for(ProductTypeEnum type : ProductTypeEnum.values()){
             map.put(type.getDescription(), type);
         }
     }
