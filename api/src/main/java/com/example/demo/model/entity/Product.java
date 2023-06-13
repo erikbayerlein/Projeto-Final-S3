@@ -30,4 +30,10 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "product_type_id"))
     private ProductType productType;
+
+    public Product(String name, BigDecimal price, ProductType productType) {
+        this.name = name;
+        this.price = price;
+        this.productType = productType;
+    }
 }
