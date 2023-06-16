@@ -70,3 +70,13 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+@media (max-width: 1150px) {
+  .left-side {
+    margin-left: 5rem;
+  }
+  
+  .right-side {
+    margin-right: 5rem;
+  }
+}
