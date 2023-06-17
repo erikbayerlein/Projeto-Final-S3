@@ -11,6 +11,8 @@ public class ProductCreationRequestDTO {
     BigDecimal price;
     String productType;
 
+    // O método toEntity é responsável por criar um objeto produto a partir da informação enviada pelo usuário
+    // -> arquivo entity/Product.java
     public Product toEntity() {
         return new Product(name, price, null);
     }

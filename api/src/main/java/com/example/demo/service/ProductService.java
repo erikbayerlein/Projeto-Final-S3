@@ -9,6 +9,9 @@ public class ProductService {
     ProductRepository productRepository;
 
     public void create(ProductCreationRequestDTO request){
+        // ProductRepository possui um método chamado save, o qual salva a informação no banco de dados
+        // Assim, passamos o request (DTO) utilizando o seu método toEntity, o qual transforma as informações em campos de produto
+        // -> arquivo request/ProductCreationRequestDTO.java
         productRepository.save(request.toEntity());
     }
 }
