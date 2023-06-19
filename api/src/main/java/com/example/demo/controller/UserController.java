@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
     UserService userService;
+
     @PostMapping("/create")
     public ResponseEntity<String> create(@Validated @RequestBody UserCreationRequestDTO request) {
         userService.create(request);
