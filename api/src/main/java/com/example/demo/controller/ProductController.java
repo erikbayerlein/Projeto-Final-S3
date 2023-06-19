@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.dto.request.ProductCreationRequestDTO;
 import com.example.demo.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequiredArgsConstructor
 public class ProductController {
+    @Autowired
     ProductService productService;
 
     // DTO contém as informações passadas através do view (usuário)
