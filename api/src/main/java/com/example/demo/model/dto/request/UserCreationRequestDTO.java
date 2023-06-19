@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 public class UserCreationRequestDTO {
     String name;
     String password;
-    // Tirar dúvida sobre role
-    String role;
+    String userRole;
+    String CPF;
 
     public User toEntity() {
-        return new User(name, password, null); //
+        return new User(name, password, null, CPF); //
     }
 }
