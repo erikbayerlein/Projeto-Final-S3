@@ -19,7 +19,7 @@ public class JwtService {
 
     private static final String FINAL_KEY = "18a7c9d8e4bf027320a9ce2c4a4151e9d80583d7eabf7647b2c6144ff06d3b78\n";
 
-    public String extractCPF(String token){
+    public static String extractCPF(String token){
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -37,12 +37,12 @@ public class JwtService {
         return generateToken(new HashMap<>(0), userDetails);
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+    public static <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    private Claims extractAllClaims(String token) {
+    private static Claims extractAllClaims(String token) {
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSigninKey())
@@ -64,7 +64,7 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    private Key getSigninKey() {
+    private static Key getSigninKey() {
         byte[] keyBytes = Decoders.BASE64.decode(FINAL_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
