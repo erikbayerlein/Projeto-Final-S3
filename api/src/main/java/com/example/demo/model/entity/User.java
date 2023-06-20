@@ -1,10 +1,7 @@
 package com.example.demo.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,9 +11,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
 @Table(name = "user")
 public class User implements UserDetails {
@@ -32,8 +28,7 @@ public class User implements UserDetails {
 
     @Column(name = "cpf", nullable = false)
     private String CPF;
-
-
+    
     // ******************************************************************
 
     // Ao invés de um tipo de produto, fizemos um "tipo" de usuário (role)
@@ -55,7 +50,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority(userRole.getName()));
     }
 
     @Override
