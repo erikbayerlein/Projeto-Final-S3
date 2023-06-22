@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,17 +29,9 @@ public class User implements UserDetails {
 
     @Column(name = "cpf", nullable = false)
     private String CPF;
-    
-    // ******************************************************************
 
-    // Ao invés de um tipo de produto, fizemos um "tipo" de usuário (role)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_role_id"))
+
     private String userRole; // falta criar
-
-    // ******************************************************************
 
     // verificar se tá certo (dúvida anterior)
     public User(String name, String password, String userRole, String CPF) {

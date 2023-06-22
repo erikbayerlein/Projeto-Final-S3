@@ -25,4 +25,9 @@ public class UserRole {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private UserRoleEnum majorRole;
+
+    public UserRole(String name, UserRoleEnum majorRole) {
+        this.name = name;
+        this.majorRole = majorRole;
+    }
 }

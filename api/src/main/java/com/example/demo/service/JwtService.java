@@ -17,8 +17,6 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String FINAL_KEY = "18a7c9d8e4bf027320a9ce2c4a4151e9d80583d7eabf7647b2c6144ff06d3b78\n";
-
     public static String extractCPF(String token){
         return extractClaim(token, Claims::getSubject);
     }
@@ -29,7 +27,7 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                .signWith(getSigninKey(), SignatureAlgorithm.ES256)
+                .signWith(getSigninKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -65,7 +63,8 @@ public class JwtService {
     }
 
     private static Key getSigninKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(FINAL_KEY);
+        String secretKey = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
