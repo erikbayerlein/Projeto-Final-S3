@@ -1,12 +1,13 @@
 package com.example.demo.model.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,12 +37,12 @@ public class User implements UserDetails {
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "user_role_id"))
-    private UserRole userRole; // falta criar
+    private String userRole; // falta criar
 
     // ******************************************************************
 
     // verificar se tá certo (dúvida anterior)
-    public User(String name, String password, UserRole userRole, String CPF) {
+    public User(String name, String password, String userRole, String CPF) {
         this.name = name;
         this.password = password;
         this.userRole = userRole;
@@ -50,7 +51,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(userRole.getName()));
+        return List.of(new SimpleGrantedAuthority(userRole));
     }
 
     @Override
