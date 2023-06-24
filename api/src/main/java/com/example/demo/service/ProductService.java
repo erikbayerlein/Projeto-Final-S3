@@ -2,24 +2,30 @@ package com.example.demo.service;
 
 import com.example.demo.model.dto.request.ProductCreationRequestDTO;
 import com.example.demo.model.entity.Product;
-import com.example.demo.model.entity.User;
+import com.example.demo.model.entity.ProductType;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.ProductTypeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    @Autowired
-    ProductRepository productRepository;
 
-    @Autowired
-    ProductTypeRepository productTypeRepository;
+    private final ProductRepository productRepository;
+
+    private final ProductTypeRepository productTypeRepository;
 
     public void create(ProductCreationRequestDTO request){
-        Product productToSave = request.toEntity();
+        Product productToSave = request.toEntity(); //transforma o DTO em um produto
 
-        productToSave.setProductType(productTypeRepository.findByName(request.getProductType()).get());
+        if(productRepository.findProductByName(productToSave.getName()).isPresent()){ //verifica se já não existe um produto com o mesmo nome
+            throw new RuntimeException("Product already exists");
+        }
+
+        ProductType productType = productTypeRepository.findByName(request.getProductType()).orElseThrow(); //verifica se o tipo de produto existe
+
+        productToSave.setProductType(productType);
 
         productRepository.save(productToSave);
     }
