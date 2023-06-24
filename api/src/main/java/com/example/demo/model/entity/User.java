@@ -27,13 +27,12 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(name = "cpf", nullable = false, unique = true)
     private String CPF;
 
+    @Column(name = "user_role", nullable = false)
+    private String userRole;
 
-    private String userRole; // falta criar
-
-    // verificar se tá certo (dúvida anterior)
     public User(String name, String password, String userRole, String CPF) {
         this.name = name;
         this.password = password;
