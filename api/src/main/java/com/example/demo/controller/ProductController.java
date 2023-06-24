@@ -20,6 +20,7 @@ public class ProductController {
         return ResponseEntity.ok("Product created successfully");
     }
 
+    @GetMapping("/{id}")
     public ResponseEntity<Product> findProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getProductById(id));
     }
