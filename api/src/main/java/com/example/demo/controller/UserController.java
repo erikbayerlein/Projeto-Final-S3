@@ -14,11 +14,5 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     UserService userService;
 
-    @PostMapping("/create")
-    public ResponseEntity<String> create(@Validated @RequestBody UserCreationRequestDTO request) {
-        userService.create(request);
-        return ResponseEntity.ok("User created successfully");
-    }
-
     
 }

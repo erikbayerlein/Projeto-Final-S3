@@ -3,7 +3,7 @@ package com.example.demo.model.enums;
 import java.util.HashMap;
 
 public enum ProductTypeEnum {
-    FOOD("food"), DRINK("description");
+    FOOD("food"), DRINK("drink");
 
     private final String description;
     private static final HashMap<String, ProductTypeEnum> map = new HashMap<>();

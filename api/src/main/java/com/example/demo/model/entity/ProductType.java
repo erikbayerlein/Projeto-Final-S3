@@ -28,4 +28,9 @@ public class ProductType implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
     private ProductTypeEnum majorType;
+
+    public ProductType(String name, ProductTypeEnum majorType) {
+        this.name = name;
+        this.majorType = majorType;
+    }
 }
