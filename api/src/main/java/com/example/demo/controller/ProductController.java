@@ -20,7 +20,7 @@ public class ProductController {
     @PostMapping("/create")
     public ResponseEntity<String> create(@Validated @RequestBody ProductCreationRequestDTO request) {
         productService.create(request);
-        return ResponseEntity.ok("Product created successfully");
+        return ResponseEntity.ok("Produto criado com sucesso.");
     }
 
     @GetMapping("/{id}")
@@ -31,7 +31,7 @@ public class ProductController {
     @PostMapping("/new-type")
     public ResponseEntity<String> createProductType(@Validated @RequestBody ProductTypeCreationDTO request) {
         productService.createProductType(request);
-        return ResponseEntity.ok("Product type created successfully");
+        return ResponseEntity.ok("Tipo criado com sucesso.");
     }
 
     @GetMapping("")
