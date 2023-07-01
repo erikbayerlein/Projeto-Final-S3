@@ -14,8 +14,10 @@ public class AuthRegisterDTO {
     private String name;
     private String CPF;
     private String password;
+    private String confirmPassword;
+    private String role;
 
     public User toUser() {
-        return new User(name, password, "CLIENT", CPF);
+        return new User(name, password, role, CPF);
     }
 }
