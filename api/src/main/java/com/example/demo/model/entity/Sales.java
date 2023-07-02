@@ -28,7 +28,10 @@ public class Sales {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "listProducts", nullable = false)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "sales_product",
+            joinColumns = @JoinColumn(name = "sales_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> listProducts;
 
     @Column(name = "date", nullable = false)
