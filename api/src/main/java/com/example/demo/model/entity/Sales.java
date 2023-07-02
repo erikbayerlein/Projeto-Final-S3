@@ -19,8 +19,11 @@ public class Sales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "salesPerson", nullable = false)
-    private String salesPerson;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "sales_salesPerson",
+            joinColumns = @JoinColumn(name = "sales_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private User salesPerson;
 
     @Column(name = "price", nullable = false)
     private BigDecimal price;
@@ -29,14 +32,18 @@ public class Sales {
     private List<Product> listProducts;
 
     @Column(name = "date", nullable = false)
-    private String date;
+    private String date; // pesquisar para alterar
 
-    public Sales(String salesPerson, BigDecimal price, String listProducts, String date) {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "sales_client",
+            joinColumns = @JoinColumn(name = "sales_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private User client;
+
+    public Sales(List<Product> listProduct, User salesPerson, BigDecimal price, String date) {
         this.salesPerson = salesPerson;
         this.price = price;
-
         this.date = date;
+        this.listProducts = listProduct;
     }
-
-
 }
