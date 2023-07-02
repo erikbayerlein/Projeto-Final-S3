@@ -18,17 +18,19 @@ public class SalesService {
     private final SalesRepository salesRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final UserService userService;
 
     public void create(SalesCreationRequestDTO request){
 
         Sales sale = request.toEntity();
-        sale.setSalesPerson(userRepository.findById(request.getSalesPersonId()).get());
 
         List<Product> productList = request.getProductList().stream()
                 .map(productId -> productRepository.findById(productId).get())
                 .toList();
 
+        sale.setSalesPerson(userRepository.findById(request.getSalesPersonId()).get());
         sale.setListProducts(productList);
+        sale.setClient(userService.getUser());
 
         salesRepository.save(sale);
     }
