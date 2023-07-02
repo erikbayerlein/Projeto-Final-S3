@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.dto.request.ProductCreationRequestDTO;
 import com.example.demo.model.dto.request.ProductTypeCreationDTO;
+import com.example.demo.model.dto.request.ProductUpdateRequestDTO;
 import com.example.demo.model.entity.Product;
 import com.example.demo.model.entity.ProductType;
 import com.example.demo.repository.ProductRepository;
@@ -25,6 +26,16 @@ public class ProductService {
         if(productRepository.findProductByName(productToSave.getName()).isPresent()){ //verifica se já não existe um produto com o mesmo nome
             throw new RuntimeException("Produto já cadastrado");
         }
+
+        ProductType productType = productTypeRepository.findByName(request.getProductType()).orElseThrow(); //verifica se o tipo de produto existe
+
+        productToSave.setProductType(productType);
+
+        productRepository.save(productToSave);
+    }
+
+    public void update(ProductUpdateRequestDTO request, Long id){
+        Product productToSave = request.toEntity();
 
         ProductType productType = productTypeRepository.findByName(request.getProductType()).orElseThrow(); //verifica se o tipo de produto existe
 

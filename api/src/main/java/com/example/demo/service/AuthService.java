@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService implements UserDetailsService {
@@ -32,6 +34,9 @@ public class AuthService implements UserDetailsService {
 
     public AuthenticationResponse register(AuthRegisterDTO request) {
         User userToRegister = request.toUser();
+        if(!Objects.equals(request.getPassword(), request.getConfirmPassword())) {
+            throw new RuntimeException("Password and Confirm Password must be equals");
+        }
         userToRegister.setPassword(passwordEncoder.encode(userToRegister.getPassword()));
         userRepository.save(userToRegister);
         return new AuthenticationResponse(jwtService.generateToken(userToRegister));
