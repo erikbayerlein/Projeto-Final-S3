@@ -9,6 +9,7 @@ import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -28,9 +29,49 @@ public class SalesService {
                 .map(productId -> productRepository.findById(productId).get())
                 .toList();
 
+        // ****************************************************************** //
+        // PRIMEIRA ABORDAGEM (creio que funciona)
+        BigDecimal total = new BigDecimal(0);
+        BigDecimal price;
+        for (Product product: productList){
+            price = product.getPrice();
+            total = total.add(price);
+        }
+        // ****************************************************************** //
+
+
         sale.setSalesPerson(userRepository.findById(request.getSalesPersonId()).get());
         sale.setListProducts(productList);
         sale.setClient(userService.getUser());
+        sale.setPrice(total);
+
+
+        // ****************************************************************** //
+        // SEGUNDA ABORDAGEM (checar se funciona e corrigir o que estier errado)
+        // tive que converter para double, pois não estava funcionando com o big decimal
+        BigDecimal total2;
+        total2 = new BigDecimal(productList.stream().mapToDouble(product -> product.getPrice().doubleValue()).sum());
+        // ****************************************************************** //
+
+
+        // ****************************************************************** //
+        // OUTRAS TENTATIVAS
+        /*total = total.add(productList.forEach(product -> product.getPrice()));
+
+        BigDecimal sum = new BigDecimal(productList.forEach(product -> total = total.add(product.getPrice())).toString());
+
+        double valor = produtos
+        // cria o stream
+        .stream()
+        // obtém os valores das vendas de todos os produtos
+        .mapToDouble(produto -> produto.getValor(Venda.class))
+        // soma tudo
+        .sum();
+
+        sale.setPrice(productList.forEach(product -> total = total.add(product.getPrice())));*/
+        // ****************************************************************** //
+
+
 
         salesRepository.save(sale);
     }

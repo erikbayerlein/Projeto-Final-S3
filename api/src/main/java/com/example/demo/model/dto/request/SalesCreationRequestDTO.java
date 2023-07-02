@@ -1,6 +1,5 @@
 package com.example.demo.model.dto.request;
 
-import com.example.demo.model.entity.Product;
 import com.example.demo.model.entity.Sales;
 import lombok.Data;
 
@@ -16,7 +15,7 @@ public class SalesCreationRequestDTO {
     String date;
 
     public Sales toEntity() {
-        return new Sales(null , null, price, date);
+        return new Sales(null , null, null, date);
     }
 
 }
