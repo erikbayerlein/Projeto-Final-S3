@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.dto.request.SalesCreationRequestDTO;
+import com.example.demo.model.entity.Sales;
 import com.example.demo.service.SalesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/sales")
@@ -20,5 +23,9 @@ public class SalesController {
         return ResponseEntity.ok("Venda criada com sucesso.");
     }
 
+    @GetMapping("/getSalesPerson/{salesPersonId}")
+    public ResponseEntity<List<Sales>> findBySalesPerson(@PathVariable Long salesPersonId) {
+        return ResponseEntity.ok(salesService.getBySalesPerson(salesPersonId));
+    }
 
 }

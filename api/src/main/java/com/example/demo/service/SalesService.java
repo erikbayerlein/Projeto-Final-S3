@@ -34,4 +34,13 @@ public class SalesService {
 
         salesRepository.save(sale);
     }
+
+    public Sales getById(Long id) {
+        return salesRepository.findById(id).get();
+    }
+
+    public List<Sales> getBySalesPerson(Long salesPersonId) {
+        return salesRepository.findBySalesPerson(userRepository.findById(salesPersonId).get());
+    }
+
 }
