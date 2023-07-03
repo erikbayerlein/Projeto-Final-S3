@@ -33,4 +33,9 @@ public class SalesController {
         return ResponseEntity.ok(salesService.getAll());
     }
 
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Sales> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(salesService.getById(id));
+    }
+
 }
