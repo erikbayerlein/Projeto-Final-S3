@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface SalesRepository extends JpaRepository<Sales, Long> {
     List<Sales> findBySalesPerson(User salesPerson);
+
+    List<Sales> findAllByClient(User client);
 }

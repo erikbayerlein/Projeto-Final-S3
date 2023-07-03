@@ -84,4 +84,7 @@ public class SalesService {
         return salesRepository.findBySalesPerson(userRepository.findById(salesPersonId).get());
     }
 
+    public List<Sales> getAll() {
+        return salesRepository.findAllByClient(userService.getUser());
+    }
 }

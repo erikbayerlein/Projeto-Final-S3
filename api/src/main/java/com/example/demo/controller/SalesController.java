@@ -28,4 +28,9 @@ public class SalesController {
         return ResponseEntity.ok(salesService.getBySalesPerson(salesPersonId));
     }
 
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Sales>> getAll() {
+        return ResponseEntity.ok(salesService.getAll());
+    }
+
 }
