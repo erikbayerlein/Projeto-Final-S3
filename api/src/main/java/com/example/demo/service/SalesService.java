@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -43,6 +44,7 @@ public class SalesService {
         sale.setSalesPerson(userRepository.findById(request.getSalesPersonId()).get());
         sale.setListProducts(productList);
         sale.setClient(userService.getUser());
+        sale.setDate(LocalDate.now());
         sale.setPrice(productList.stream().
                         map(Product::getPrice)
                         .reduce(BigDecimal.ZERO, BigDecimal::add));
@@ -77,11 +79,15 @@ public class SalesService {
     }
 
     public Sales getById(Long id) {
-        return salesRepository.findById(id).get();
+        return salesRepository.findById(id).orElseThrow();
+    }
+
+    public List<Sales> getByDate(LocalDate date) {
+        return salesRepository.findAllByDate(date);
     }
 
     public List<Sales> getBySalesPerson(Long salesPersonId) {
-        return salesRepository.findBySalesPerson(userRepository.findById(salesPersonId).get());
+        return salesRepository.findBySalesPerson(userRepository.findById(salesPersonId).orElseThrow());
     }
 
     public List<Sales> getAll() {

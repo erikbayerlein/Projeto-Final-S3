@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -34,8 +35,9 @@ public class Sales {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> listProducts;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "date", nullable = false)
-    private String date; // pesquisar para alterar
+    private LocalDate date;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "sales_client",
@@ -43,10 +45,9 @@ public class Sales {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private User client;
 
-    public Sales(List<Product> listProduct, User salesPerson, BigDecimal price, String date) {
+    public Sales(List<Product> listProduct, User salesPerson, BigDecimal price) {
         this.salesPerson = salesPerson;
         this.price = price;
-        this.date = date;
         this.listProducts = listProduct;
     }
 }

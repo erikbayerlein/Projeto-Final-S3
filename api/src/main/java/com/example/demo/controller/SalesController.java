@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.dto.request.ListSalesByDateRequestDTO;
 import com.example.demo.model.dto.request.SalesCreationRequestDTO;
 import com.example.demo.model.entity.Sales;
 import com.example.demo.service.SalesService;
@@ -36,6 +37,11 @@ public class SalesController {
     @GetMapping("/getById/{id}")
     public ResponseEntity<Sales> getById(@PathVariable Long id) {
         return ResponseEntity.ok(salesService.getById(id));
+    }
+
+    @GetMapping("/getByDate")
+    public ResponseEntity<List<Sales>> getByDate(@RequestBody ListSalesByDateRequestDTO date) {
+        return ResponseEntity.ok(salesService.getByDate(date.getDate()));
     }
 
 }
