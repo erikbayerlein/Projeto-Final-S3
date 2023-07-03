@@ -31,26 +31,28 @@ public class SalesService {
 
         // ****************************************************************** //
         // PRIMEIRA ABORDAGEM (creio que funciona)
-        BigDecimal total = new BigDecimal(0);
-        BigDecimal price;
-        for (Product product: productList){
-            price = product.getPrice();
-            total = total.add(price);
-        }
+//        BigDecimal total = new BigDecimal(0);
+//        BigDecimal price;
+//        for (Product product: productList){
+//            price = product.getPrice();
+//            total = total.add(price);
+//        }
         // ****************************************************************** //
 
 
         sale.setSalesPerson(userRepository.findById(request.getSalesPersonId()).get());
         sale.setListProducts(productList);
         sale.setClient(userService.getUser());
-        sale.setPrice(total);
+        sale.setPrice(productList.stream().
+                        map(Product::getPrice)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add));
 
 
         // ****************************************************************** //
         // SEGUNDA ABORDAGEM (checar se funciona e corrigir o que estier errado)
         // tive que converter para double, pois não estava funcionando com o big decimal
-        BigDecimal total2;
-        total2 = new BigDecimal(productList.stream().mapToDouble(product -> product.getPrice().doubleValue()).sum());
+//        BigDecimal total2;
+//        total2 = new BigDecimal(productList.stream().mapToDouble(product -> product.getPrice().doubleValue()).sum());
         // ****************************************************************** //
 
 
@@ -70,8 +72,6 @@ public class SalesService {
 
         sale.setPrice(productList.forEach(product -> total = total.add(product.getPrice())));*/
         // ****************************************************************** //
-
-
 
         salesRepository.save(sale);
     }
