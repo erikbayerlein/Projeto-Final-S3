@@ -1,0 +1,42 @@
+/* Aqui podemos configurar
+   a estilização do título
+*/
+.texto {
+  font-family: "Louis George Cafe", sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Aqui criamos o estilo
+   da linha esquerda (before)
+   e linha direita (after) 
+*/
+.texto:before,
+.texto:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1.4px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+/* Aqui configuramos o estilo
+   da linha esquerda (before)
+*/
+.texto:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+/* Aqui configuramos o estilo
+   da linha direita (after)
+*/
+.texto:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
