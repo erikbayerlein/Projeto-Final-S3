@@ -16,12 +16,10 @@ import java.util.List;
 public class SalesResponse {
 
     private BigDecimal price;
-
     private List<Product> listProducts;
-
     private LocalDate date;
-
     private Long id;
+
 
     public SalesResponse(BigDecimal price, List<Product> listProducts, LocalDate date, Long id) {
     this.price = price;
@@ -34,6 +32,4 @@ public class SalesResponse {
     public static SalesResponse fromEntity(Sales sales){
             return new SalesResponse(sales.getPrice(), sales.getListProducts(), sales.getDate(), sales.getSalesPerson().getId() );
         }
-
-
 }

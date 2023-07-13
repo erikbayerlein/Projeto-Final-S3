@@ -21,13 +21,12 @@ import java.util.List;
  *  Essa classe lida com a lógica de negócios relacionada aos produtos.
  *
  * @param Objetos do tipo ProductRepository e ProductTypeRepository
- * 
  */
 public class ProductService {
     
     private final ProductRepository productRepository;
-
     private final ProductTypeRepository productTypeRepository;
+
 
     /** Transforma o ProductCreationRequestDTO em um produto, e verifica se é posível cadastrar o produto. */
     public void create(ProductCreationRequestDTO request){

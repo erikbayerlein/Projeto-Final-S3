@@ -21,21 +21,23 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-// Essa classe define as configurações de segurança para a aplicação usando Spring Security
+/**
+ * Essa classe define as configurações de segurança para a aplicação usando Spring Security
+ */
 public class SecurityConfig {
-    // Campos:
+
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
-    // Métodos:
-    // 1) Método usado para codificar as senhas dos usuários.
+
     @Bean
+    /** Método usado para codificar as senhas dos usuários. */
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // 2) Configura algumas regras de segurança para a aplicação
     @Bean
+    /** Configura algumas regras de segurança para a aplicação */
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)

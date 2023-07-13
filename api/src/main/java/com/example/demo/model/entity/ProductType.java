@@ -13,9 +13,14 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "product_type")
-// Essa classe é uma entidade que representa um tipo de produto no banco de dados
+
+/**
+ * Uma entidade que representa um tipo de produto no banco de dados.
+ *
+ * @param Id, nome e tipo de produto.
+ */
 public class ProductType implements Serializable {
-    // Campos:
+
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "id", updatable = false, unique = true)

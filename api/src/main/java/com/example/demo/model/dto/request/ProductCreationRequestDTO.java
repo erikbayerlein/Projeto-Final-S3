@@ -8,15 +8,21 @@ import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Data
-// A classe ProductCreationRequestDTO é um DTO que representa os dados de criação de um produto.
+
+/**
+ * Um DTO que representa os dados de criação de um produto.
+ *
+ * @param dados fornecidos pelo usuário.
+ * @return objeto Product com os dados fornecidos.
+ */
 public class ProductCreationRequestDTO {
-    // Campos:
+
     String name;
     BigDecimal price;
     String productType;
 
-    // Métodos:
-    // 1) Converte o objeto ProductCreationRequestDTO em um objeto Product
+
+    /** Converte o objeto ProductCreationRequestDTO em um objeto Product */
     public Product toEntity() {
         return new Product(name, price, null);
     }

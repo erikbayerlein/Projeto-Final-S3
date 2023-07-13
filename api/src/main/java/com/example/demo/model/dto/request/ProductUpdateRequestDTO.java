@@ -9,16 +9,20 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Data
 
-// Essa classe é usada para transferir os dados de atualização de um produto.
+/**
+ * usada para transferir os dados de atualização de um produto.
+ *
+ * @param Nome, preço e tipo do produto.
+ * @return objeto Product atualizado com os dados fornecidos.
+ */
 public class ProductUpdateRequestDTO {
-    
-    // Campos:
+
     String name;
     BigDecimal price;
     String productType;
 
-    // Métodos:
-    // 1) Converte o objeto ProductUpdateRequestDTO em um objeto Product
+
+    /** Converte o objeto ProductUpdateRequestDTO em um objeto Product */
     public Product toEntity() {
         return new Product(name, price, null);
     }

@@ -19,7 +19,6 @@ import java.util.function.Function;
 /**
  * Essa classe é responsável por gerar e validar tokens JWT 
  *
- * 
  * @return String CPF, String Token, Booleano, Data,
  */
 public class JwtService {

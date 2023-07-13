@@ -16,20 +16,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 
-// Essa Classe recebe os dados de registro ou login fornecidos pelo cliente, chama os métodos apropriados do serviço e retorna as respostas adequadas para o cliente
+/**
+ * Essa Classe recebe os dados de registro ou login fornecidos pelo cliente,
+ * chama os métodos apropriados do serviço e retorna as respostas adequadas para o cliente
+ *
+ * @param dados fornecidos pelo cliente.
+ * @return as respostas adequadas.
+ */
 public class AuthenticationController {
-    
-    // Campos:
+
     private final AuthService authService;
 
-    // Métodos:
-    // 1) Endpoint que lida com a solicitação de registro de um usuário.
+
+    /** Endpoint que lida com a solicitação de registro de um usuário.  */
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthRegisterDTO request) {
         return ResponseEntity.ok(authService.register(request));
     }
 
-    // 2) Endpoint que lida com a solicitação de autenticação de um usuário.
+    /** Endpoint que lida com a solicitação de autenticação de um usuário.  */
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthLoginDTO request) {
         return ResponseEntity.ok(authService.authenticate(request));

@@ -5,8 +5,13 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-//A classe ListSalesByDateRequestDTO é um DTO que representa os critérios de busca por data para listar as vendas
+
+/**
+ * Um DTO que representa os critérios de busca por data para listar as vendas
+ *
+ * @param data.
+ */
 public class ListSalesByDateRequestDTO {
-    // Campos:
+
     LocalDate date;
 }

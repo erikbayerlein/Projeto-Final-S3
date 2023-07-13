@@ -23,20 +23,17 @@ import java.util.Objects;
  * Essa classe encapsula a lógica de autenticação e registro de usuários
  *
  * @param UserRepository, Password
- * @return se tiver
  */
 public class AuthService implements UserDetailsService {
     
     private final JwtService jwtService;
-
     private final AuthenticationManager authenticationManager;
-
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
 
-    /** Consulta o UserRepository para encontrar o usuário com o CPF correspondente e retorna um objeto UserDetails, caso seja encontrado */
+
     @Override
+    /** Consulta o UserRepository para encontrar o usuário com o CPF correspondente e retorna um objeto UserDetails, caso seja encontrado */
     public UserDetails loadUserByUsername(String CPF) throws UsernameNotFoundException {
         return userRepository.findByCPF(CPF).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }

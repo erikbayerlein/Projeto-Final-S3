@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 /**
  * Essa classe fornece informações sobre o usuário atualmente autenticado
  *
- * 
  * @return Objetos do tipo UserLoggedResponseDTO e User
  */
 public class UserService {

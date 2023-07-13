@@ -9,7 +9,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-// Essa interface define operações de acesso a dados relacionadas à entidade Sales
+/**
+ * Essa interface define operações de acesso a dados relacionadas à entidade Sales
+ */
 public interface SalesRepository extends JpaRepository<Sales, Long> {
     List<Sales> findBySalesPerson(User salesPerson);
 

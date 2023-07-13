@@ -8,7 +8,9 @@ import java.util.Optional;
 
 
 @Repository
-// Essa interface define operações de acesso a dados relacionadas à entidade Product
+/**
+ * Essa interface define operações de acesso a dados relacionadas à entidade Product
+ */
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findProductByName(String name);
 }

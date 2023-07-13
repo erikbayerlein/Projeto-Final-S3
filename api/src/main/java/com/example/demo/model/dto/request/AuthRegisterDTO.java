@@ -11,18 +11,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-// Essa classe envia os dados de registro do usuário para a API ou para a camada de serviço, permitindo a criação de uma instância de User
+/**
+ * Envia os dados de registro do usuário para a API
+ * ou para a camada de serviço, permitindo a criação de uma instância de User
+ *
+ * @param dados fornecidos pelo usuário.
+ * @return novo usuário.
+ */
 public class AuthRegisterDTO {
 
-    // Campos:
     private String name;
     private String CPF;
     private String password;
     private String confirmPassword;
     private String role;
 
-    // Métodos
-    // 1) Converte o objeto AuthRegisterDTO em um objeto User
+    /** Converte o objeto AuthRegisterDTO em um objeto User */
     public User toUser() {
         return new User(name, password, role, CPF);
     }

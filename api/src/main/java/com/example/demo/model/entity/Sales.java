@@ -14,9 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "sales")
-// Essa classe é uma entidade que representa uma venda no banco de dados
+
+/**
+ * Ujma entidade que representa uma venda no banco de dados
+ *
+ * @param Id, vendedor, preço, lista de produtos, data e cliente.
+ */
 public class Sales {
-    // Campos:    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

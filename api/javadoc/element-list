@@ -1,0 +1,11 @@
+com.example.demo
+com.example.demo.configuration
+com.example.demo.controller
+com.example.demo.model.dto.pojos
+com.example.demo.model.dto.request
+com.example.demo.model.dto.response
+com.example.demo.model.entity
+com.example.demo.model.enums
+com.example.demo.repository
+com.example.demo.security
+com.example.demo.service

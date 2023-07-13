@@ -6,17 +6,22 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 
 @AllArgsConstructor
-// Essa classe é usada para transferir os dados de criação de um usuário
+
+/**
+ * Usada para transferir os dados de criação de um usuário
+ *
+ * @param Nome, senha, tipo do usuário e CPF.
+ * @return objeto User com os dados fornecidos.
+ */
 public class UserCreationRequestDTO {
 
-    //Campos:
     String name;
     String password;
     String userRole;
     String CPF;
 
-    // Métodos:
-    // 1) Converte o objeto UserCreationRequestDTO em um objeto User
+
+    /** Converte o objeto UserCreationRequestDTO em um objeto User */
     public User toEntity() {
         return new User(name, password, null, CPF); //
     }

@@ -16,35 +16,39 @@ import java.util.List;
 @CrossOrigin
 @RequiredArgsConstructor
 
-// Essa classe define as rotas para criação, busca e manipulação de produtos. Ele recebe os dados fornecidos pelo cliente, chama os métodos apropriados do serviço correspondente (productService) e retorna as respostas adequadas para o cliente.
+/**
+ * Define as rotas para criação, busca e manipulação de produtos.
+ *
+ * @param dados fornecidos pelo cliente.
+ * @return as respostas adequadas para o cliente.
+ */
 public class ProductController {
 
-    // Campos:
     private final ProductService productService;
 
-    // Métodos:
-    // 1) Endpoint que lida com a solicitação de criação de um novo produto.
+
     @PostMapping("/create")
+    /** Endpoint que lida com a solicitação de criação de um novo produto */
     public ResponseEntity<String> create(@Validated @RequestBody ProductCreationRequestDTO request) {
         productService.create(request);
         return ResponseEntity.ok("Produto criado com sucesso.");
     }
 
-    // 2) Endpoint que lida com a solicitação de busca de um produto por ID.
     @GetMapping("/{id}")
+    /** Endpoint que lida com a solicitação de busca de um produto por ID. */
     public ResponseEntity<Product> findProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    // 3) Endpoint que lida com a solicitação de criação de um novo tipo de produto. 
     @PostMapping("/new-type")
+    /** Endpoint que lida com a solicitação de criação de um novo tipo de produto. */
     public ResponseEntity<String> createProductType(@Validated @RequestBody ProductTypeCreationDTO request) {
         productService.createProductType(request);
         return ResponseEntity.ok("Tipo criado com sucesso.");
     }
 
-    // 4) Endpoint para obter uma lista de todos os produtos cadastrados. 
     @GetMapping("")
+    /** Endpoint para obter uma lista de todos os produtos cadastrados. */
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }

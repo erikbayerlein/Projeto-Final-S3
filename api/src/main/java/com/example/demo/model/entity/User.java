@@ -16,9 +16,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Table(name = "users")
-// Essa classe é uma entidade que representa um usuário no banco de dados.
+
+/**
+ * Uma entidade que representa um usuário no banco de dados.
+ *
+ * @param Id, nome, senha, CPF e tipo de usuário.
+ */
 public class User implements UserDetails {
-    // Campos:
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,39 +47,38 @@ public class User implements UserDetails {
         this.CPF = CPF;
     }
 
-    // Métodos:
-    // 1) Retorna uma coleção de GrantedAuthority que representa os roles do usuário
     @Override
+    /** Retorna uma coleção de GrantedAuthority que representa os roles do usuário. */
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(userRole));
     }
 
-    // 2) Retorna o CPF do usuário, que é usado como o nome de usuário.
     @Override
+    /** Retorna o CPF do usuário, que é usado como o nome de usuário. */
     public String getUsername() {
         return CPF;
     }
 
-    // 3) Retorna True caso a conta passe em um dos testes de autenticação
     @Override
+    /** Retorna True caso a conta passe em um dos testes de autenticação */
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    // 4) Retorna True caso a conta passe em um dos testes de autenticação
     @Override
+    /** Retorna True caso a conta passe em um dos testes de autenticação */
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    // 5) Retorna True caso a conta passe em um dos testes de autenticação
     @Override
+    /** Retorna True caso a conta passe em um dos testes de autenticação */
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    // 6) Retorna True caso a conta passe em um dos testes de autenticação
     @Override
+    /** Retorna True caso a conta passe em um dos testes de autenticação */
     public boolean isEnabled() {
         return true;
     }

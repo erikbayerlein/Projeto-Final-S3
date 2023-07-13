@@ -8,10 +8,13 @@ import lombok.*;
 @Data
 @Builder
 
-// Essa classe é um DTO que representa os dados de login do usuário. 
+/**
+ * Um DTO que representa os dados de login do usuário.
+ *
+ * @param dados fornecidos pelo usuário.
+ */
 public class AuthLoginDTO {
 
-    // Campos:
     String CPF;
     String password;
 }

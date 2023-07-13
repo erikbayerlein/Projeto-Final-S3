@@ -6,15 +6,20 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-//  Essa classe é usada para transferir os dados de criação de uma venda
+
+/**
+ * Usada para transferir os dados de criação de uma venda
+ *
+ * @param Lista de produtos vendidas e id do vendendor.
+ * @return objeto Sales vazio.
+ */
 public class SalesCreationRequestDTO {
 
-    // Campos
     List<Long> productList;
     Long salesPersonId;
 
-    // Métodos
-    // 1) Retorna uma instância vazia de Sales
+
+    /** Retorna uma instância vazia de Sales */
     public Sales toEntity() {
         return new Sales();
     }
