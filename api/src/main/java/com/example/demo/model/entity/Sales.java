@@ -17,8 +17,6 @@ import java.util.List;
 
 /**
  * Ujma entidade que representa uma venda no banco de dados
- *
- * @param Id, vendedor, preço, lista de produtos, data e cliente.
  */
 public class Sales {
 

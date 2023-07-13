@@ -17,8 +17,6 @@ import java.math.BigDecimal;
 
 /**
  * Uma entidade que representa um produto no banco de dados.
- *
- * @param Id, nome, preéco e tipo de produto.
  */
 public class Product implements Serializable {
 

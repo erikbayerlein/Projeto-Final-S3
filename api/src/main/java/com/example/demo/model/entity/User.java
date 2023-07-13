@@ -19,8 +19,6 @@ import java.util.List;
 
 /**
  * Uma entidade que representa um usuário no banco de dados.
- *
- * @param Id, nome, senha, CPF e tipo de usuário.
  */
 public class User implements UserDetails {
 

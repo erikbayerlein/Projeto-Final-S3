@@ -17,8 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Configuração do provedor de serviços de autenticação do Spring (UserDetailsService e AuthenticationProvider) e do AuthenticationManager.
- *
- * @param interface userRepository para acesso a dados.
  */
 public class ApplicationConfiguration {
 

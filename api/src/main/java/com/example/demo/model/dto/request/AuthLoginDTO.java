@@ -10,8 +10,6 @@ import lombok.*;
 
 /**
  * Um DTO que representa os dados de login do usuário.
- *
- * @param dados fornecidos pelo usuário.
  */
 public class AuthLoginDTO {
 

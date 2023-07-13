@@ -9,9 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * Usada para transferir os dados de criação de um usuário
- *
- * @param Nome, senha, tipo do usuário e CPF.
- * @return objeto User com os dados fornecidos.
  */
 public class UserCreationRequestDTO {
 

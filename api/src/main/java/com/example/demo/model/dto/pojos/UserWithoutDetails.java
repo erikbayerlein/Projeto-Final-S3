@@ -9,9 +9,6 @@ import lombok.Data;
 
 /**
  * um DTO que representa um usuário sem os detalhes sensíveis.
- *
- * @param dados do usuário.
- * @return um objeto UserWithoutDetails a partir de um user fornecido.
  */
 public class UserWithoutDetails {
 

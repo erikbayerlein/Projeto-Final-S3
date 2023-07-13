@@ -16,8 +16,6 @@ import java.io.Serializable;
 
 /**
  * Uma entidade que representa um tipo de produto no banco de dados.
- *
- * @param Id, nome e tipo de produto.
  */
 public class ProductType implements Serializable {
 

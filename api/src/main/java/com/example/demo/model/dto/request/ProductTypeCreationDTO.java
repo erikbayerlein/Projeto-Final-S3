@@ -11,9 +11,6 @@ import lombok.NonNull;
 
 /**
  * Usada para transferir os dados de criação de um tipo de produto.
- *
- * @param Nome e tipo do produto.
- * @return objeto ProductType com os dados fornecidos.
  */
 public class ProductTypeCreationDTO {
 

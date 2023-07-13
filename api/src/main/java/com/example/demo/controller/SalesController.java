@@ -18,9 +18,6 @@ import java.util.List;
 
 /**
  * Essa classe define as rotas para criação, busca e manipulação de vendas.
- *
- * @param dados fornecidos pelo cliente.
- * @return as respostas adequadas.
  */
 public class SalesController {
 

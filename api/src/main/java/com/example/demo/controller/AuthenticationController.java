@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Essa Classe recebe os dados de registro ou login fornecidos pelo cliente,
  * chama os métodos apropriados do serviço e retorna as respostas adequadas para o cliente
- *
- * @param dados fornecidos pelo cliente.
- * @return as respostas adequadas.
  */
 public class AuthenticationController {
 

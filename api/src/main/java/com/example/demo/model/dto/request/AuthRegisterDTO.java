@@ -14,9 +14,6 @@ import lombok.NoArgsConstructor;
 /**
  * Envia os dados de registro do usuário para a API
  * ou para a camada de serviço, permitindo a criação de uma instância de User
- *
- * @param dados fornecidos pelo usuário.
- * @return novo usuário.
  */
 public class AuthRegisterDTO {
 

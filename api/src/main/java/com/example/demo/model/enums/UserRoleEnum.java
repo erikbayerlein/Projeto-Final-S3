@@ -5,9 +5,6 @@ import java.util.HashMap;
 
 /**
  * Essa classe é uma enumeração que define os possíveis papéis de usuário (Cliente, gerente, administrador)
- *
- * @param Descrição do papel, HashMap que associa o nome do papel com sua descrição
- * @return Descrição do papel, Nome do papel
  */
 public enum UserRoleEnum {
     CLIENT("client"), MANAGER("MANAGER"), ADMIN("admin");

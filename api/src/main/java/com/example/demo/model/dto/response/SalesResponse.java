@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  *  Envia informações resumidas sobre uma venda como resposta em uma requisição, evitando a exposição desnecessária de informações sensíveis ou detalhadas.
- *
- * @param Preço, Lista de Produtos, Data, Id 
- * @return Objeto do tipo Sales response que contém os dados da venda
  */
 public class SalesResponse {
 

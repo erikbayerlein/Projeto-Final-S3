@@ -9,9 +9,6 @@ import java.util.List;
 
 /**
  * Usada para transferir os dados de criação de uma venda
- *
- * @param Lista de produtos vendidas e id do vendendor.
- * @return objeto Sales vazio.
  */
 public class SalesCreationRequestDTO {
 

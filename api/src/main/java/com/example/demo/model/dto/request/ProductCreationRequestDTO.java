@@ -11,9 +11,6 @@ import java.math.BigDecimal;
 
 /**
  * Um DTO que representa os dados de criação de um produto.
- *
- * @param dados fornecidos pelo usuário.
- * @return objeto Product com os dados fornecidos.
  */
 public class ProductCreationRequestDTO {
 

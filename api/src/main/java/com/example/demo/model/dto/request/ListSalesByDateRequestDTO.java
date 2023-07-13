@@ -8,8 +8,6 @@ import java.time.LocalDate;
 
 /**
  * Um DTO que representa os critérios de busca por data para listar as vendas
- *
- * @param data.
  */
 public class ListSalesByDateRequestDTO {
 

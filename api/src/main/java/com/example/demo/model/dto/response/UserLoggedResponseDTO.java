@@ -9,9 +9,6 @@ import lombok.Data;
 
 /**
  *  Essa classe é um DTO que representa os dados de resposta de um usuário logado
- *
- * @param Nome, CPF e Papel do usuário
- * @return Objeto de tipo UserLoggedResponseDTO
  */
 public class UserLoggedResponseDTO {
 

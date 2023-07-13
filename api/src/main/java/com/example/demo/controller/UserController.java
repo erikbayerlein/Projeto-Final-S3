@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * Essa classe define a rota para obter os detalhes do usuário logado.
- *
- * @param dados fornecidos pelo cliente.
- * @return as respostas adequadas.
  */
 public class UserController {
 

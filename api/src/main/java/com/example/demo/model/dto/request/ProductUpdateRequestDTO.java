@@ -11,9 +11,6 @@ import java.math.BigDecimal;
 
 /**
  * usada para transferir os dados de atualização de um produto.
- *
- * @param Nome, preço e tipo do produto.
- * @return objeto Product atualizado com os dados fornecidos.
  */
 public class ProductUpdateRequestDTO {
 

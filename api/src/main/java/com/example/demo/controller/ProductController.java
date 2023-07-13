@@ -18,9 +18,6 @@ import java.util.List;
 
 /**
  * Define as rotas para criação, busca e manipulação de produtos.
- *
- * @param dados fornecidos pelo cliente.
- * @return as respostas adequadas para o cliente.
  */
 public class ProductController {
 
