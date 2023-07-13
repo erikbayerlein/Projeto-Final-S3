@@ -2,11 +2,15 @@ package com.example.demo.model.enums;
 
 import java.util.HashMap;
 
-// Essa classe é uma enumeração define os possíveis tipos de produto (Comida e bebida)
+/**
+ * Essa classe é uma enumeração define os possíveis tipos de produto (Comida e bebida)
+ *
+ * @param Descrição do produto, HashMap que associa o nome com a descrição
+ * @return se tiver
+ */
 public enum ProductTypeEnum {
     FOOD("food"), DRINK("drink");
 
-    // Campos:
     private final String description;
     private static final HashMap<String, ProductTypeEnum> map = new HashMap<>();
 
@@ -14,11 +18,10 @@ public enum ProductTypeEnum {
         this.description = description;
     }
 
-    // Métodos:
-    // 1) Retorna a descrição do tipo do produto
+    /** Retorna a descrição do tipo do produto */
     public String getDescription(){ return this.description; }
 
-    // 2) retorna o tipo de produto correspondente à descrição fornecida
+    /** Retorna o tipo de produto correspondente à descrição fornecida */
     public static ProductTypeEnum getByDescription(String type) {
         return map.get(type);
     }

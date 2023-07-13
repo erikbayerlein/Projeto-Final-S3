@@ -7,7 +7,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-
+/**
+ *  Envia informações resumidas sobre uma venda como resposta em uma requisição, evitando a exposição desnecessária de informações sensíveis ou detalhadas.
+ *
+ * @param Preço, Lista de Produtos, Data, Id 
+ * @return Objeto do tipo Sales response que contém os dados da venda
+ */
 public class SalesResponse {
 
     private BigDecimal price;
@@ -25,8 +30,9 @@ public class SalesResponse {
     this.id = id;
         }
 
+    /** Métodos: criar um objeto SalesResponse a partir de uma entidade Sales */
     public static SalesResponse fromEntity(Sales sales){
-            return new SalesResponse(sales.getPrice(), sales.getListProducts(), sales.getDate(), sales.getId());
+            return new SalesResponse(sales.getPrice(), sales.getListProducts(), sales.getDate(), sales.getSalesPerson().getId() );
         }
 
 

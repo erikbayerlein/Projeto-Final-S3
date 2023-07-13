@@ -4,7 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-// Essa é a classe de entrada principal para a aplicação Spring Boot
+
+/**
+ *  Essa é a classe de entrada principal para a aplicação Spring Boot
+ *
+ * 
+ * 
+ */
 public class ApiApplication {
 
 	public static void main(String[] args) {
