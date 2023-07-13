@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
+// Essa classe representa a resposta a uma requisição de busca por Id do produto
 public class ProductByIdDTO {
 
+    // Campos:
     private String name;
 
     private BigDecimal price;

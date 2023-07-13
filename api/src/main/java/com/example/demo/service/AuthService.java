@@ -18,7 +18,9 @@ import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
+// 
 public class AuthService implements UserDetailsService {
+    // Campos:
     private final JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
@@ -27,11 +29,14 @@ public class AuthService implements UserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
 
+    // Métodos:
+    // 1) Consulta o UserRepository para encontrar o usuário com o CPF correspondente e retorna um objeto UserDetails, caso seja encontrado
     @Override
     public UserDetails loadUserByUsername(String CPF) throws UsernameNotFoundException {
         return userRepository.findByCPF(CPF).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+    // 2) Realiza o registro de um novo usuário. Verifica se a senha e a confirmação de senha são iguais e, em seguida, codifica a senha antes de salvar o usuário no banco de dados. Em seguida, ele gera um token JWT para o usuário registrado e retorna um objeto AuthenticationResponse contendo o token.
     public AuthenticationResponse register(AuthRegisterDTO request) {
         User userToRegister = request.toUser();
         if(!Objects.equals(request.getPassword(), request.getConfirmPassword())) {
@@ -42,6 +47,7 @@ public class AuthService implements UserDetailsService {
         return new AuthenticationResponse(jwtService.generateToken(userToRegister));
     }
 
+    // 3) Realiza a autenticação das credenciais fornecidas no objeto AuthLoginDTO. Depois gera um token para o usuário autenticado.
     public AuthenticationResponse authenticate(AuthLoginDTO request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

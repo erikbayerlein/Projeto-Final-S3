@@ -14,8 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "sales")
+// Essa classe é uma entidade que representa uma venda no banco de dados
 public class Sales {
-
+    // Campos:    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -19,11 +19,16 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+
+// Essa classe funciona como um filtro de requisição para autenticação baseada em JWT (JSON Web Token).
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    // Campos:
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
+    // Métodos:
+    // 1) Realiza a autenticação com base no token JWT fornecido no cabeçalho Authorization da requisição. Ele extrai e valida o token JWT, carrega os detalhes do usuário, cria uma autenticação e a configura no contexto de segurança. Depois permite que a requisição prossiga para o próximo filtro na cadeia.
     @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,

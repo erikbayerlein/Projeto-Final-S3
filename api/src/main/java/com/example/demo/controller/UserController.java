@@ -13,9 +13,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 @CrossOrigin
 @RequiredArgsConstructor
+
+// Essa classe define a rota para obter os detalhes do usuário logado. 
 public class UserController {
+
+    // Campos:
     private final UserService userService;
 
+    // Métodos:
+    // 1) Endpoint que lida com a solicitação de busca do usuário logado. 
     @GetMapping("/me")
     public ResponseEntity<UserLoggedResponseDTO> getUserLogged(){
         return ResponseEntity.ok(userService.getUserLogged());

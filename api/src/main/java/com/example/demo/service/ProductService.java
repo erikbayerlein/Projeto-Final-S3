@@ -14,14 +14,20 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
 
+
+// Essa classe 
+public class ProductService {
+    
+    // Campos:
     private final ProductRepository productRepository;
 
     private final ProductTypeRepository productTypeRepository;
 
+    // Métodos:
+    // 1) Transforma o DTO em um produto, e verifica se é posível cadastrar o produto.
     public void create(ProductCreationRequestDTO request){
-        Product productToSave = request.toEntity(); //transforma o DTO em um produto
+        Product productToSave = request.toEntity(); 
 
         if(productRepository.findProductByName(productToSave.getName()).isPresent()){ //verifica se já não existe um produto com o mesmo nome
             throw new RuntimeException("Produto já cadastrado");
@@ -34,6 +40,7 @@ public class ProductService {
         productRepository.save(productToSave);
     }
 
+    // 2) 
     public void update(ProductUpdateRequestDTO request, Long id){
         Product productToSave = request.toEntity();
 
@@ -44,6 +51,7 @@ public class ProductService {
         productRepository.save(productToSave);
     }
 
+    // 3)
     public void createProductType(ProductTypeCreationDTO request){
         ProductType productType = request.toEntity();
         if(productTypeRepository.findByName(productType.getName()).isPresent()){
@@ -52,10 +60,12 @@ public class ProductService {
         productTypeRepository.save(productType);
     }
 
+    // 4)
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElseThrow();
     }
 
+    // 5)
     public List<Product> getAllProducts() {
         List<Product> products = productRepository.findAll();
         if(products.isEmpty()){

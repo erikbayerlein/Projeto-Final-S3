@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+// Essa classe é um DTO que representa a resposta de autenticação
 public class AuthenticationResponse {
+    // Campos:
     private String token;
 }

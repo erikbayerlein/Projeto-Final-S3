@@ -14,7 +14,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "product")
+// Essa classe é uma entidade que representa um produto no banco de dados.
 public class Product implements Serializable {
+    // Campos:
     @Serial
     private static final long serialVersionUID = 1L;
 
