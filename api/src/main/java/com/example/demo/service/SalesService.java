@@ -15,13 +15,17 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+// Essa classe lida com a lógica de negócios relacionada às vendas. 
 public class SalesService {
 
+    // Campos:
     private final SalesRepository salesRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final UserService userService;
 
+    // Métodos:
+    // 1) criar uma nova venda com base nos dados fornecidos no objeto request do tipo SalesCreationRequestDTO. Ele define o vendedor, a lista de produtos, o cliente (obtido do userService), a data atual e o preço total da venda. 
     public void create(SalesCreationRequestDTO request){
 
         Sales sale = request.toEntity();
@@ -78,18 +82,22 @@ public class SalesService {
         salesRepository.save(sale);
     }
 
+    // 2) Recupera uma venda do banco de dados com base no ID fornecido
     public Sales getById(Long id) {
         return salesRepository.findById(id).orElseThrow();
     }
 
+    // 3) Recupera todas as vendas do banco de dados que correspondem à data fornecida.
     public List<Sales> getByDate(LocalDate date) {
         return salesRepository.findAllByDate(date);
     }
 
+    // 4) Recupera todas as vendas do banco de dados associadas a um determinado vendedor
     public List<Sales> getBySalesPerson(Long salesPersonId) {
         return salesRepository.findBySalesPerson(userRepository.findById(salesPersonId).orElseThrow());
     }
 
+    // 5) Recupera todas as vendas do banco de dados associadas ao cliente atualmente autenticado
     public List<Sales> getAll() {
         return salesRepository.findAllByClient(userService.getUser());
     }

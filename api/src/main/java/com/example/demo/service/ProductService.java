@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 
 
-// Essa classe 
+// Essa classe lida com a lógica de negócios relacionada aos produtos.
 public class ProductService {
     
     // Campos:
@@ -25,7 +25,7 @@ public class ProductService {
     private final ProductTypeRepository productTypeRepository;
 
     // Métodos:
-    // 1) Transforma o DTO em um produto, e verifica se é posível cadastrar o produto.
+    // 1) Transforma o ProductCreationRequestDTO em um produto, e verifica se é posível cadastrar o produto.
     public void create(ProductCreationRequestDTO request){
         Product productToSave = request.toEntity(); 
 
@@ -40,7 +40,7 @@ public class ProductService {
         productRepository.save(productToSave);
     }
 
-    // 2) 
+    // 2) Recebe o ID do produto como parâmetro e atualiza o produto existente
     public void update(ProductUpdateRequestDTO request, Long id){
         Product productToSave = request.toEntity();
 
@@ -51,7 +51,7 @@ public class ProductService {
         productRepository.save(productToSave);
     }
 
-    // 3)
+    // 3) Transforma o ProductTypeCreationRequestDTO em um tipo de produto, e verifica se é posível cadastrar o novo tipo de produto.
     public void createProductType(ProductTypeCreationDTO request){
         ProductType productType = request.toEntity();
         if(productTypeRepository.findByName(productType.getName()).isPresent()){
@@ -60,12 +60,12 @@ public class ProductService {
         productTypeRepository.save(productType);
     }
 
-    // 4)
+    // 4) Recupera um produto do banco de dados com base no ID fornecido
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElseThrow();
     }
 
-    // 5)
+    // 5) Recupera todos os produtos do banco de dados usando o método findAll do productRepository
     public List<Product> getAllProducts() {
         List<Product> products = productRepository.findAll();
         if(products.isEmpty()){
